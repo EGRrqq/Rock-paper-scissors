@@ -9,7 +9,7 @@ function getComputerChoice() {
 
   // access the array elements using this variable in square brackets
 
-  console.log(RockPaperScissors[randomNum]);
+  return RockPaperScissors[randomNum];
 }
 
 function getUserChoice() {
@@ -21,10 +21,11 @@ function getUserChoice() {
 
   // ignore all user values except rock, paper and scissor
 
-  usersInput === "rock" || usersInput === "paper" || usersInput === "scissor"
-    ? console.log(usersInput)
-    : getUserChoice()
+  return usersInput === "rock" ||
+    usersInput === "paper" ||
+    usersInput === "scissor"
+    ? usersInput
+    : getUserChoice();
 }
 
-getComputerChoice();
-getUserChoice();
+console.log(RockPaperScissors(), getUserChoice());
