@@ -1,7 +1,27 @@
+function playRound(playerSelection, computerSelection) {
+  // create conditional statement for these rules:
+
+  // Rock beats scissors and loses to paper
+  // Paper beats rock, but loses to scissors
+  // Scissors beat paper but loses to rock
+
+  if (
+    (playerSelection === "rock" && computerSelection === "scissor") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissor" && computerSelection === "paper")
+  ) {
+    return `You Win! ${playerSelection} beats ${computerSelection}`;
+  } else if (playerSelection === computerSelection) {
+    return "Tie! Try your luck in a new round";
+  } else {
+    return `You Lose! ${playerSelection} sucks ${computerSelection}`;
+  }
+}
+
 function getComputerChoice() {
   // initialize an array that contains 3 elements such as "rock", "paper" and "scissors"
 
-  const RockPaperScissors = ["rock", "paper", "scissors"];
+  const RockPaperScissors = ["rock", "paper", "scissor"];
 
   // create a variable that randomly access number between 0 and 2
 
@@ -28,4 +48,8 @@ function getUserChoice() {
     : getUserChoice();
 }
 
-console.log(RockPaperScissors(), getUserChoice());
+const playerSelection = getUserChoice();
+const computerSelection = getComputerChoice();
+
+console.log(playerSelection, computerSelection);
+console.log(playRound(playerSelection, computerSelection));
