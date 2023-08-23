@@ -1,2 +1,2 @@
 # rock-paper-scissors
-js and commit practice
+js, commit, pseudocode and problem solving practice
