@@ -1,9 +1,22 @@
-function playRound(playerSelection, computerSelection) {
+function game(rounds = 5) {
+  // create a loop that runs the playRound function 5 times
+  // also add the score to return value
+
+  for (let i = 0; i < rounds; i++) {
+    let result = playRound();
+    console.log(result, "\n", scoreCounter(result));
+  }
+}
+
+function playRound() {
   // create conditional statement for these rules:
 
   // Rock beats scissors and loses to paper
   // Paper beats rock, but loses to scissors
   // Scissors beat paper but loses to rock
+
+  const playerSelection = getUserChoice();
+  const computerSelection = getComputerChoice();
 
   if (
     (playerSelection === "rock" && computerSelection === "scissor") ||
@@ -48,8 +61,19 @@ function getUserChoice() {
     : getUserChoice();
 }
 
-const playerSelection = getUserChoice();
-const computerSelection = getComputerChoice();
+const score = {
+  playerScore: 0,
+  computerScore: 0,
+};
 
-console.log(playerSelection, computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function scoreCounter(result) {
+  if (result.includes("Win")) {
+    score.playerScore++;
+  } else if (result.includes("Lose")) {
+    score.computerScore++;
+  }
+
+  return `your score is ${score.playerScore} ${score.computerScore}`;
+}
+
+console.log(game(5));
