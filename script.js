@@ -1,25 +1,35 @@
 function playRound() {
-  // create conditional statement for these rules:
+  // create variable that stores all btns
+  const playButtons = document.querySelectorAll(".btn-choice");
 
-  // Rock beats scissors and loses to paper
-  // Paper beats rock, but loses to scissors
-  // Scissors beat paper but loses to rock
+  // loop through these variable
+  // on each iteration add onClick event listener
+  playButtons.forEach((btn) =>
+    btn.addEventListener("click", (event) => {
+      // pass a function to the event listener that:
+      // - retrieve the innerText of the button
+      // - make innerText case-insensitive
+      // - pass this innerText to 'playerSelection' variable
 
-  const playerSelection = getUserChoice();
-  const computerSelection = getComputerChoice();
+      let playerSelection = btn.innerText.toLowerCase();
+      let computerSelection = getComputerChoice();
 
-  if (
-    (playerSelection === "rock" && computerSelection === "scissor") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissor" && computerSelection === "paper")
-  ) {
-    return `You Win! ${playerSelection} beats ${computerSelection}`;
-  } else if (playerSelection === computerSelection) {
-    return "Tie! Try your luck in a new round";
-  } else {
-    return `You Lose! ${playerSelection} sucks ${computerSelection}`;
-  }
+      if (
+        (playerSelection === "rock" && computerSelection === "scissor") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissor" && computerSelection === "paper")
+      ) {
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+      } else if (playerSelection === computerSelection) {
+        console.log("Tie! Try your luck in a new round");
+      } else {
+        console.log(`You Lose! ${playerSelection} sucks ${computerSelection}`);
+      }
+    })
+  );
 }
+
+console.log(playRound());
 
 function getComputerChoice() {
   const RockPaperScissors = ["rock", "paper", "scissor"];
