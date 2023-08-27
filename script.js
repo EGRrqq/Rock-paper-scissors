@@ -1,24 +1,4 @@
-// create a play function that contains
-// - getPlayerChoice function
-// - getComputerChoice function
-// - countScore function
-// - showResult function
-// - showScore function
-
-(function play() {
-  getPlayerChoice();
-  getComputerChoice();
-  countScore(isPlayerWin);
-  showResult(isPlayerWin);
-  showScore();
-})();
-
-// create a variable to store all buttons
 const playButtons = document.querySelectorAll(".btn-choice");
-
-// create object that contains:
-// - player and computer keys
-// - choice and score values
 
 const game = {
   player: {
@@ -31,11 +11,14 @@ const game = {
   },
 };
 
-// create showScore function
-// - create variables main(query selector) and h1(new) 
-// - attach onClick event listener to each button
-// - change the text content of h1 at each click
-// - append h1 to main
+(function play() {
+  getPlayerChoice();
+  getComputerChoice();
+  countScore(isPlayerWin);
+  showResult(isPlayerWin);
+  showScore();
+})();
+
 
 function showScore() {
   const main = document.querySelector("main");
@@ -49,12 +32,6 @@ function showScore() {
 
   main.appendChild(h1);
 }
-
-// create showResult function
-// - create main(for link) and p(new) variables
-// - use isPlayerWin as callback function
-// - use condition in previous playRound function
-// - append p to main
 
 function showResult(isPlayerWin) {
   const main = document.querySelector("main");
@@ -77,13 +54,6 @@ function showResult(isPlayerWin) {
   main.appendChild(p);
 }
 
-// recreate previous showScore function into a new countScore function
-// - function performs only one task - counting score !!!!!!!
-// - use isPlayerWin as a callback function
-// - attach onClick event listener to each button
-// - use condition in the showScore function
-// - store score in a game object
-
 function countScore(isPlayerWin) {
   playButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -97,10 +67,6 @@ function countScore(isPlayerWin) {
     });
   });
 }
-
-// create isPlayerWin function
-// - function need two parameters playerSelection and computerSelection
-// - use previous condition in the playRound function
 
 function isPlayerWin(playerSelection, computerSelection) {
   if (
@@ -116,11 +82,6 @@ function isPlayerWin(playerSelection, computerSelection) {
   }
 }
 
-// create getPlayerChoice function:
-// - iterate over all buttons
-// - attach onClick event listener to each button
-// - store the button`s innerText in the game object
-
 function getPlayerChoice() {
   playButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -129,10 +90,6 @@ function getPlayerChoice() {
     });
   });
 }
-
-// modify getPlayerChoice function:
-// - attach an onClick event listener to each button
-// - store a random value in the game object
 
 function getComputerChoice() {
   playButtons.forEach((btn) => {
