@@ -1,4 +1,5 @@
 const playButtons = document.querySelectorAll(".btn-choice");
+const main = document.querySelector("main");
 
 const game = {
   player: {
@@ -17,24 +18,46 @@ const game = {
   countScore(isPlayerWin);
   showResult(isPlayerWin);
   showScore();
+  showWinner();
 })();
 
-
-function showScore() {
-  const main = document.querySelector("main");
+function showWinner() {
   const h1 = document.createElement("h1");
 
   playButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      h1.textContent = `${game.player.score} - ${game.computer.score}`;
+      if (game.player.score === 5) {
+        h1.textContent = "player win";
+        disableButtons();
+      } else if (game.computer.score === 5) {
+        h1.textContent = "computer win";
+        disableButtons();
+      }
     });
   });
 
-  main.appendChild(h1);
+  main.prepend(h1);
+}
+
+function disableButtons() {
+  playButtons.forEach((btn) => {
+    btn.setAttribute("disabled", true);
+  });
+}
+
+function showScore() {
+  const h2 = document.createElement("h2");
+
+  playButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      h2.textContent = `${game.player.score} - ${game.computer.score}`;
+    });
+  });
+
+  main.appendChild(h2);
 }
 
 function showResult(isPlayerWin) {
-  const main = document.querySelector("main");
   const p = document.createElement("p");
 
   playButtons.forEach((btn) => {
